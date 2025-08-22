@@ -1,4 +1,5 @@
 import tkinter as tk
+from tkinter import messagebox
 import tkinter.ttk as ttk
 import json
 import datetime
@@ -16,13 +17,25 @@ class MainWindow(tk.Frame):
 
         #create window
         master.title('ToDo App')
-        master.geometry("600x400")
+        master.geometry('600x400')
+        self.saved = True
+        master.protocol("WM_DELETE_WINDOW", self.delete_window)
         self.sub_win = None
         self.task_manager = JsonManager(TASK_FILE)
         self.completed_manager = JsonManager(COMPLETED_FILE)
         self.tasks = self.task_manager.load_task()
         self.completed = self.completed_manager.load_task()
         self.create_widgets()
+
+    def delete_window(self):
+        if not self.saved:
+            ret = messagebox.askyesno('Warning', 'Do you want exit without saving?',icon='question')
+            if ret:
+                self.master.destroy()
+            else:
+                return
+        else:
+            self.master.destroy()
 
     def create_widgets(self):
         #Entry frame
@@ -40,14 +53,11 @@ class MainWindow(tk.Frame):
 
         task_label = tk.Label(self, text='Todo:', width=10, anchor=tk.W)
         task_label.pack(padx=10, anchor=tk.W)
-        #task list 
-        #module = ('tkinter', 'os', 'datetime', 'math', 'sys', 'time', 'glob', 'ttk','numpy','a','b','c','d')
-        #var = tk.StringVar(value=module)
 
         #Task frame
         task_frame = tk.Frame(self)
         #create widget
-        self.listbox = tk.Listbox(task_frame, width=40, height=10, selectmode="multiple")
+        self.listbox = tk.Listbox(task_frame, width=40, height=10, selectmode='multiple')
         scrollbar = tk.Scrollbar(task_frame, orient='vertical', command=self.listbox.yview)
         #set scrollbar
         self.listbox['yscrollcommand'] = scrollbar.set
@@ -60,9 +70,9 @@ class MainWindow(tk.Frame):
         #Button frame
         btn_frame = tk.Frame(self)
         #create widget
-        select_all_btn = ttk.Button(btn_frame,text="select all", width=11, command=self.selectall_task)
-        deselect_all_btn = ttk.Button(btn_frame,text="deselect", command=self.deselect_task)
-        complete_btn = ttk.Button(btn_frame,text="complete", command=self.complete_task)
+        select_all_btn = ttk.Button(btn_frame,text='select all', width=11, command=self.selectall_task)
+        deselect_all_btn = ttk.Button(btn_frame,text='deselect', command=self.deselect_task)
+        complete_btn = ttk.Button(btn_frame,text='complete', command=self.complete_task)
     
         #set widget
         select_all_btn.pack(side='left', padx=(0,2))
@@ -77,9 +87,9 @@ class MainWindow(tk.Frame):
         style = ttk.Style()
         style.configure("Del.TButton", background="red", foreground="white")
 
-        new_win_btn = ttk.Button(btn_frame2, text="show completed", width=11, command=self.show_subwindow)
-        save_btn = ttk.Button(btn_frame2,text="save", command=self.save_task)
-        delete_btn = ttk.Button(btn_frame2, text="delete", command=self.delete_task)
+        new_win_btn = ttk.Button(btn_frame2, text='show completed', width=11, command=self.show_subwindow)
+        save_btn = ttk.Button(btn_frame2,text='save', command=self.save_task)
+        delete_btn = ttk.Button(btn_frame2, text='delete', command=self.delete_task)
         
         new_win_btn.pack(side='left', padx=(0,2))
         save_btn.pack(side='left', padx=2)
@@ -102,6 +112,7 @@ class MainWindow(tk.Frame):
             self.tasks.append(new_task)
             self.update_task()
             self.entry.delete(0,tk.END)
+            self.saved = False
 
     def selectall_task(self):
         self.listbox.select_set(0,tk.END)
@@ -114,7 +125,7 @@ class MainWindow(tk.Frame):
 
         for i in reversed(selectedIndex):
             selected_task = self.listbox.get(i)
-            time = datetime.datetime.now().strftime("%Y/%m/%d %H:%M:%S")
+            time = datetime.datetime.now().strftime('%Y/%m/%d %H:%M:%S')
             completed_task = {"task": selected_task,"Time completed": time}
             self.completed.append(completed_task)
             self.listbox.delete(i)
@@ -126,18 +137,27 @@ class MainWindow(tk.Frame):
             self.sub_win.completed = self.completed 
             self.sub_win.update_completed()
 
+        self.saved = False
+
     def save_task(self):
         self.task_manager.write_task(self.tasks)
         self.completed_manager.write_task(self.completed)
+        self.saved = True
 
     def delete_task(self):
-        selectedIndex = self.listbox.curselection()
+        ret = messagebox.askyesno('Warning', 'Do you want to delete tasks?',icon='question')
+        if ret:
+            selectedIndex = self.listbox.curselection()
 
-        for i in reversed(selectedIndex):
-            self.listbox.delete(i)
-            del self.tasks[i]
+            for i in reversed(selectedIndex):
+                self.listbox.delete(i)
+                del self.tasks[i]
 
-        self.update_task()
+            self.update_task()
+            self.saved = False
+        
+        else:
+            return
 
     def show_subwindow(self):
        if self.sub_win is None or not self.sub_win.winfo_exists():
