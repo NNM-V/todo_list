@@ -19,7 +19,7 @@ class MainWindow(tk.Frame):
         master.title('ToDo App')
         master.geometry('600x400')
         self.saved = True
-        master.protocol("WM_DELETE_WINDOW", self.delete_window)
+        master.protocol('WM_DELETE_WINDOW', self.delete_window)
         self.sub_win = None
         self.task_manager = JsonManager(TASK_FILE)
         self.completed_manager = JsonManager(COMPLETED_FILE)
@@ -85,11 +85,11 @@ class MainWindow(tk.Frame):
         btn_frame2 = tk.Frame(self)
 
         style = ttk.Style()
-        style.configure("Del.TButton", background="red", foreground="white")
+        style.configure('Del.TButton', foreground='red')
 
         new_win_btn = ttk.Button(btn_frame2, text='show completed', width=11, command=self.show_subwindow)
         save_btn = ttk.Button(btn_frame2,text='save', command=self.save_task)
-        delete_btn = ttk.Button(btn_frame2, text='delete', command=self.delete_task)
+        delete_btn = ttk.Button(btn_frame2, text='delete', style='Del.TButton', command=self.delete_task)
         
         new_win_btn.pack(side='left', padx=(0,2))
         save_btn.pack(side='left', padx=2)
