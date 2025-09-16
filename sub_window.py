@@ -39,7 +39,7 @@ class SubWindow(tk.Toplevel):
         clear_all_btn.pack(side='left', padx=(0,2))
         clear_all_btn.pack(side='left', padx=2)
 
-        btn_frame.pack(side=tk.TOP)
+        btn_frame.pack(side='top')
 
         self.update_completed()
 
