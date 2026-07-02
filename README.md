@@ -6,7 +6,10 @@
 </p>
 
 # To-Do List Application
-    GUI todolist application with python.
+    GUI ToDo list application with python.
+    <img width="596" height="431" alt="Image" src="https://github.com/user-attachments/assets/00d86202-8416-477e-a2d9-0bf98613f36e" />
+
+    <img width="398" height="325" alt="Image" src="https://github.com/user-attachments/assets/8621c19f-1761-4bb0-9e6d-da27838e7dd7" />
     
 ## Table of Contents
 - About the Project
@@ -16,7 +19,7 @@
 - How to Use
 
 ## About the Project
-A GUI ToDolist application that allows users to manage tasks and mark tasks as completed.
+A GUI ToDo list application that allows users to manage tasks and mark tasks as completed.
 
 ## Environment
 - Python 3.11
