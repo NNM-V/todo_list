@@ -22,7 +22,7 @@ A GUI ToDo list application that allows users to manage tasks and mark tasks as 
 # Image
     ![MainWindow](https://github.com/user-attachments/assets/ab239d7f-d79a-4d05-a04e-56f99a3537ec)
 
-    ![SubWindow](https://github.com/user-attachments/assets/8621c19f-1761-4bb0-9e6d-da27838e7dd7")
+    ![SubWindow](https://github.com/user-attachments/assets/8621c19f-1761-4bb0-9e6d-da27838e7dd7)
 
 ## Environment
 - Python 3.11
