@@ -6,7 +6,7 @@
 </p>
 
 # To-Do List Application
-    GUI ToDo list application with python.
+GUI ToDo list application with python.
 
 ## Table of Contents
 - About the Project
@@ -39,7 +39,7 @@ A GUI ToDo list application that allows users to manage tasks and mark tasks as 
 ├── sub_window.py
 ```
 
-## How to Build (Linux/Mac)
+## Installation (Linux/Mac)
 1.Install Python.
 
 2.Clone the repository to your local environment.
