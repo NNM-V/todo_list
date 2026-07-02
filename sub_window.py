@@ -41,11 +41,14 @@ class SubWindow(tk.Toplevel):
 
         btn_frame.pack(side='top')
 
+        self.update_completed()
+
     def update_completed(self):
         self.listbox.delete(0,tk.END)
 
         for update_completed in self.completed:
-            self.listbox.insert(tk.END,update_completed)
+            completed = f"{update_completed['task']} {update_completed['Time completed']}"
+            self.listbox.insert(tk.END,completed)
 
     def clear_all_completed(self):
         self.completed.clear()

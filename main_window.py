@@ -97,6 +97,8 @@ class MainWindow(tk.Frame):
 
         btn_frame2.pack(side=tk.TOP)
         
+        self.update_task()
+
     def update_task(self):
         self.listbox.delete(0,tk.END)
 
@@ -109,7 +111,6 @@ class MainWindow(tk.Frame):
         if new_task:
             self.tasks.append(new_task)
             self.update_task()
-            self.entry.delete(0,tk.END)
             self.saved = False
 
     def selectall_task(self):
@@ -123,8 +124,8 @@ class MainWindow(tk.Frame):
 
         for i in reversed(selectedIndex):
             selected_task = self.listbox.get(i)
-            time = datetime.datetime.now().strftime('%Y/%m/%d %H:%M:%S')
-            completed_task = {"task": selected_task,"Time completed": time}
+            create_time = datetime.datetime.now().strftime('%Y/%m/%d %H:%M:%S')
+            completed_task = {"task": selected_task,"Time completed": create_time}
             self.completed.append(completed_task)
             self.listbox.delete(i)
             del self.tasks[i]
