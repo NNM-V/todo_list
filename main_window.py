@@ -96,9 +96,7 @@ class MainWindow(tk.Frame):
         delete_btn.pack(side='left', padx=2)
 
         btn_frame2.pack(side=tk.TOP)
-
-        self.update_task()
-
+        
     def update_task(self):
         self.listbox.delete(0,tk.END)
 
@@ -154,8 +152,9 @@ class MainWindow(tk.Frame):
                 del self.tasks[i]
 
             self.update_task()
+            self.task_manager.write_task(self.tasks)
             self.saved = False
-        
+
         else:
             return
 

@@ -41,8 +41,6 @@ class SubWindow(tk.Toplevel):
 
         btn_frame.pack(side='top')
 
-        self.update_completed()
-
     def update_completed(self):
         self.listbox.delete(0,tk.END)
 
@@ -50,8 +48,6 @@ class SubWindow(tk.Toplevel):
             self.listbox.insert(tk.END,update_completed)
 
     def clear_all_completed(self):
-        self.listbox.select_set(0,tk.END)
-        self.listbox.delete(0,tk.END)
         self.completed.clear()
         self.completed_manager.write_task(self.completed)
         self.update_completed()
