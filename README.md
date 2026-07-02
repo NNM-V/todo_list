@@ -5,7 +5,7 @@
 	<img alt="Static Badge" src="https://img.shields.io/badge/python-blue">
 </p>
 
-# TodoList Application
+# To-Do List Application
     GUI todolist application with python.
     
 ## Table of Contents
@@ -16,7 +16,7 @@
 - How to Use
 
 ## About the Project
-Todolist that supports users to list up chores and tasks and check off.
+A GUI ToDolist application that allows users to manage tasks and mark tasks as completed.
 
 ## Environment
 - Python 3.11
@@ -25,7 +25,12 @@ Todolist that supports users to list up chores and tasks and check off.
 
 ## Directory
 ```text
-
+.
+├── json_manager.py
+├── main_window.py
+├── main.py
+├── README.md
+├── sub_window.py
 ```
 
 ## How to Build (Linux/Mac)
@@ -33,20 +38,20 @@ Todolist that supports users to list up chores and tasks and check off.
 
 2.Clone the repository to your local environment.
 
-3.Move to the project directory on terminal.
+3.Move to the project directory in the terminal.
 
 4.Build the program on your terminal with command below:
 ```bash
     python -m compileall  main.py
 ```
 
-4.Run program with command below:
+5.Run program with command below:
 ```bash
     python main.py  
 ```
 
 ## How to Use
-1.Input task to "Input Task" bar and press "add" button. The task will be added to Todo section.
+1.Input task to "Input Task" bar and press "add" button. The task will be added to ToDo section.
 
 2.Click task and press "complete" button to move the task to the completed list. Press "Select all" to move everything from the list.
 
