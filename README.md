@@ -8,12 +8,9 @@
 # To-Do List Application
     GUI ToDo list application with python.
 
-    !["Img1"] (https://github.com/user-attachments/assets/00d86202-8416-477e-a2d9-0bf98613f36e")
-
-    !["Img2"] (https://github.com/user-attachments/assets/8621c19f-1761-4bb0-9e6d-da27838e7dd7")
-
 ## Table of Contents
 - About the Project
+- Image
 - Environment
 - Directory
 - How to Build
@@ -21,6 +18,11 @@
 
 ## About the Project
 A GUI ToDo list application that allows users to manage tasks and mark tasks as completed.
+
+# Image
+    !["Img1"] (https://github.com/user-attachments/assets/00d86202-8416-477e-a2d9-0bf98613f36e")
+
+    !["Img2"] (https://github.com/user-attachments/assets/8621c19f-1761-4bb0-9e6d-da27838e7dd7")
 
 ## Environment
 - Python 3.11
